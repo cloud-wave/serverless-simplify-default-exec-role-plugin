@@ -25,7 +25,7 @@ function simplifyBaseIAMLogGroups(serverless) {
 
   for (const key in resourceSection) {
     if (key === 'IamRoleLambdaExecution') {
-      resourceSection[key].Properties.Policies[0].PolicyDocument.Statement=[...resourceSection[key].Properties.Policies[0].PolicyDocument.Statement.filter(s=>!s.Action.includes("logs:CreateLogStream")&&!s.Action.includes("logs:CreateLogGroup")&&!s.Action.includes("logs:PutLogEvents")),...policyStatements]
+      resourceSection[key].Properties.Policies[0].PolicyDocument.Statement=[...(resourceSection[key].Properties.Policies[0].PolicyDocument.Statement.filter(s=>!s.Action.includes("logs:CreateLogStream")&&!s.Action.includes("logs:CreateLogGroup")&&!s.Action.includes("logs:PutLogEvents"))),...policyStatements]
     }
   }
 }
